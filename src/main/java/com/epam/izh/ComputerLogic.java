@@ -30,7 +30,7 @@ public class ComputerLogic {
             printPlayerMove();
             playerMatchesCount = new Scanner(System.in).nextInt();
             if (!isCorrectCount(playerMatchesCount)) {
-                pringErrorMessage();
+                printErrorMessage();
             }
         }
         return playerMatchesCount;

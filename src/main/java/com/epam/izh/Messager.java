@@ -13,7 +13,7 @@ public class Messager {
         }
     }
 
-    public static void pringErrorMessage() {
+    public static void printErrorMessage() {
         System.out.println("Некорректное количество спичек!");
     }
 
