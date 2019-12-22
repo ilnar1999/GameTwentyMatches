@@ -1,11 +1,11 @@
 package com.epam.izh;
 
 public class Messager {
-    public static void printGameStart() {
+    public void printGameStart() {
         System.out.println("Игра началась. На столе лежит 20 спичек.");
     }
 
-    public static void printMatchesCount(int count) {
+    public void printMatchesCount(int count) {
         if (count > 4) {
             System.out.printf("На столе осталось %d спичек.\n", count);
         } else if (count > 1){
@@ -13,19 +13,19 @@ public class Messager {
         }
     }
 
-    public static void printErrorMessage() {
+    public void printErrorMessage() {
         System.out.println("Некорректное количество спичек!");
     }
 
-    public static void printGameEnd() {
+    public void printGameEnd() {
         System.out.println("Для игрока осталась последняя спичка. Игрок проиграл!");
     }
 
-    public static void printComputerMatchesCount(int computerCount) {
+    public void printComputerMatchesCount(int computerCount) {
         System.out.printf(" - Количество выбранных компьютером спичек = %s.\n", computerCount);
     }
 
-    public static void printPlayerMove() {
+    public void printPlayerMove() {
         System.out.print(" - Ход игрока. Введите количество спичек: ");
     }
 }

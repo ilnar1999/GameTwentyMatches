@@ -1,58 +1,57 @@
 package com.epam.izh;
 
 import java.util.Scanner;
-import static com.epam.izh.Messager.*;
 
 public class ComputerLogic {
-    private final static int SUM_PLAYER_AND_COMPUTER_MATCHES_FOR_WIN = 4;
-    private static int matchesCount = 20;
-    private static int playerMatchesCount = 1; // начальное значение для взятия компьютером 3 спичек
-    private static int computerMatchesCount;
+    private Messager messager = new Messager();
+    private int matchesCount = 20;
+    private int playerMatchesCount = 1; // начальное значение для взятия компьютером 3 спичек
 
-    public static int getMatchesCount() {
+    public int getMatchesCount() {
         return matchesCount;
     }
 
-    static boolean isEndGame(int matchesCount) {
+    boolean isEndGame(int matchesCount) {
         if (matchesCount <= 1) {
             return true;
         }
         return false;
     }
 
-    static  int getComputerMatchesCount(int playerMatchesCount) {
+    int getComputerMatchesCount(int playerMatchesCount) {
+        int SUM_PLAYER_AND_COMPUTER_MATCHES_FOR_WIN = 4;
         return SUM_PLAYER_AND_COMPUTER_MATCHES_FOR_WIN - playerMatchesCount;
     }
 
-    static int getPlayerMatchesCount() {
+    int getPlayerMatchesCount() {
         int playerMatchesCount = 0;
         while (!isCorrectCount(playerMatchesCount)){
-            printPlayerMove();
+            messager.printPlayerMove();
             playerMatchesCount = new Scanner(System.in).nextInt();
             if (!isCorrectCount(playerMatchesCount)) {
-                printErrorMessage();
+                messager.printErrorMessage();
             }
         }
         return playerMatchesCount;
     }
 
-    static boolean isCorrectCount(int playerMatchesCount) {
+    boolean isCorrectCount(int playerMatchesCount) {
         if (!(playerMatchesCount < 1 || playerMatchesCount > 3)) {
             return true;
         }
         return false;
     }
 
-    static void moveComputer() {
-        computerMatchesCount = getComputerMatchesCount(playerMatchesCount);
-        printComputerMatchesCount(computerMatchesCount);
+    void moveComputer() {
+        int computerMatchesCount = getComputerMatchesCount(playerMatchesCount);
+        messager.printComputerMatchesCount(computerMatchesCount);
         matchesCount -= computerMatchesCount;
-        printMatchesCount(matchesCount);
+        messager.printMatchesCount(matchesCount);
     }
 
-    static void movePlayer() {
+    void movePlayer() {
         playerMatchesCount = getPlayerMatchesCount();
         matchesCount -= playerMatchesCount;
-        printMatchesCount(matchesCount);
+        messager.printMatchesCount(matchesCount);
     }
 }
